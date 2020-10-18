@@ -1,11 +1,12 @@
 import rospy
 from std_msgs.msg import String
 
-rospy.init_node('node1')
+
+rospy.init_node('test1')
 
 def timerCallBack(event):
     msg = String()
-    msg.data = 'test'
+    msg.data = 'test2'
     pub.publish(msg)
     
 
