@@ -56,19 +56,19 @@ def timerCallBack(event):
     scan_len = len(scan.ranges)
     if scan_len > 0:
         read = min(scan.ranges[scan_len-10 : scan_len+10])
+
+        error = -(setpoint - read)
+        
+        P = kp*error
+        I = 0
+        D = 0
+        control = P+I+D
+        if control > 1:
+            control = 1
+        elif control < -1:
+            control = -1
     else:
-        read = setpoint
-    
-    error = -(setpoint - read)
-    
-    P = kp*error
-    I = 0
-    D = 0
-    control = P+I+D
-    if control > 1:
-        control = 1
-    elif control < -1:
-        control = -1
+        control = 0        
     
     msg = Twist()
     msg.linear.x = control
