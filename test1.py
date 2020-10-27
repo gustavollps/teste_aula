@@ -46,7 +46,7 @@ def timerCallBack(event):
     """
     setpoint = (-1,-1)
     position = odom.pose.pose.position
-    dist = math.sqrt((setpoint[0] - position.x)**2 + (setpoint[1] - position.y) **2)
+    dist = setpoint[0] - position.x #math.sqrt((setpoint[0] - position.x)**2 + (setpoint[1] - position.y) **2)
     error = dist
     
     P = kp*error
@@ -57,6 +57,7 @@ def timerCallBack(event):
         control = 1
     elif control < -1:
         control = -1
+        
     print(dist, control)
     
     msg = Twist()
