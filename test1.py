@@ -57,6 +57,7 @@ def timerCallBack(event):
         control = 1
     elif control < -1:
         control = -1
+    print(dist, control)
     
     msg = Twist()
     msg.linear.x = control
