@@ -33,6 +33,7 @@ def scanCallBack(msg):
 
 # TIMER - Control Loop ----------------------------------------------
 def timerCallBack(event):
+    """
     yaw = getAngle(odom)
     setpoint = -45
     error = (setpoint - yaw)
@@ -42,14 +43,23 @@ def timerCallBack(event):
             error += 360 
         else:
             error -= 360
-        
+    """
+    setpoint = (-1,-1)
+    position = odom.pose.pose.position
+    dist = math.sqrt((setpoint[0] - position.x)**2 + (setpoint[1] - position.y) **2)
+    error = dist
+    
     P = kp*error
     I = 0
     D = 0
     control = P+I+D
+    if control > 1:
+        control = 1
+    elif control < -1:
+        control = -1
     
     msg = Twist()
-    msg.angular.z = control
+    msg.linear.x = control
     pub.publish(msg)
     
 
