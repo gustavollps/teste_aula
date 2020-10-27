@@ -44,10 +44,18 @@ def timerCallBack(event):
         else:
             error -= 360
     """
+    """
     setpoint = (-1,-1)
     position = odom.pose.pose.position
     dist = setpoint[0] - position.x #math.sqrt((setpoint[0] - position.x)**2 + (setpoint[1] - position.y) **2)
     error = dist
+    """
+    
+    scan_len = len(scan.ranges)
+    read = min(scan.ranges[scan_len-10 : scan_len+10])
+    
+    setpoint = 0.5
+    error = -(setpoint - read)
     
     P = kp*error
     I = 0
