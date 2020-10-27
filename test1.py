@@ -51,10 +51,14 @@ def timerCallBack(event):
     error = dist
     """
     
-    scan_len = len(scan.ranges)
-    read = min(scan.ranges[scan_len-10 : scan_len+10])
-    
     setpoint = 0.5
+    
+    scan_len = len(scan.ranges)
+    if scan_len > 0:
+        read = min(scan.ranges[scan_len-10 : scan_len+10])
+    else:
+        read = setpoint
+    
     error = -(setpoint - read)
     
     P = kp*error
