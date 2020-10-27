@@ -6,7 +6,7 @@ import tf
 import math
 
 
-kp = 0.01
+kp = 1
 
 odom = Odometry()
 scan = LaserScan()
