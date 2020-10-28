@@ -6,8 +6,8 @@ random.seed(matricula)
 x = 0
 y = 0
 
-while abs(x) < 0.5 or abs(y) < 0.8:
-    x = random.random() * 7 - 3.5
-    y = random.random() * 7 - 3.5
+while x**2 + y**2 > 4**2 or x**2 + y**2 < 2**2:
+    x = random.random() * 8 - 4
+    y = random.random() * 8 - 4
 
 print(x, y)
