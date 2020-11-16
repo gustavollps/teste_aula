@@ -56,14 +56,22 @@ def timerCallBack(event):
     scan_len = len(scan.ranges)
     
     if scan_len > 0:
-        read = 0 #min(scan.ranges[ 390 : 410]scan_len-10 : scan_len+10])
+        # read = 0 #min(scan.ranges[ 390 : 410]scan_len-10 : scan_len+10])
         ind = scan.ranges.index(min(scan.ranges))
         inc = 2*math.pi / scan_len
-        print(inc)
         ang = ind * inc * 180.0/math.pi
-        print(ang)
+        if ang > 180:
+            ang -= 360
+            
 
-        error = -(setpoint - read)
+        error = -(ang - getAngle(odom))
+        print(error)
+        
+        if abs(error) > 180:
+        if setpoint < 0:
+            error += 360 
+        else:
+            error -= 360
         
         P = kp*error
         I = 0
