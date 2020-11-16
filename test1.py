@@ -68,10 +68,10 @@ def timerCallBack(event):
         print(error)
         
         if abs(error) > 180:
-        if setpoint < 0:
-            error += 360 
-        else:
-            error -= 360
+            if setpoint < 0:
+                error += 360 
+            else:
+                error -= 360
         
         P = kp*error
         I = 0
