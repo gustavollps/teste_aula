@@ -56,7 +56,7 @@ def timerCallBack(event):
     scan_len = len(scan.ranges)
     
     if scan_len > 0:
-        # read = min(scan.ranges[ 390 : 410]scan_len-10 : scan_len+10])
+        read = 0 #min(scan.ranges[ 390 : 410]scan_len-10 : scan_len+10])
         ind = scan.ranges.index(min(scan.ranges))
         inc = 2*math.pi / scan_len
         print(inc)
