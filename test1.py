@@ -63,9 +63,9 @@ def timerCallBack(event):
         if ang > 180:
             ang -= 360
             
-
-        error = -(ang - getAngle(odom))
-        print(error)
+        yaw = getAngle(odom)
+        error = -(ang - yaw)
+        print(ang, yaw, error)
         
         if abs(error) > 180:
             if setpoint < 0:
