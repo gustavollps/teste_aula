@@ -40,7 +40,7 @@ def scanCallBack(msg):
 # TIMER - Control Loop ----------------------------------------------
 def timerCallBack(event):
     global kp, ki, kd
-    global Int
+    global Intglobal old_error
     """
     yaw = getAngle(odom)
     setpoint = -45
