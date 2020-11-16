@@ -65,13 +65,14 @@ def timerCallBack(event):
             ang -= 360
             
         error = -(ang - yaw)
-        print(ang, yaw, error)
         
         if abs(error) > 180:
             if setpoint < 0:
                 error += 360 
             else:
                 error -= 360
+                
+        print(ang, yaw, error)
         
         P = kp*error
         I = 0
@@ -85,7 +86,7 @@ def timerCallBack(event):
         control = 0        
     
     msg = Twist()
-    msg.linear.x = 0 # control
+    msg.angular.z = control
     pub.publish(msg)
     
 
