@@ -71,7 +71,7 @@ def timerCallBack(event):
         control = 0        
     
     msg = Twist()
-    msg.linear.x = control
+    msg.linear.x = 0 # control
     pub.publish(msg)
     
 
